@@ -4,17 +4,22 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "npm run mongo:stop && npm run mongo:start && node app.js",
+    "mongo:start": "docker run -p 27017:27017 --name DataNoobDB -d mongo:3.3.6 && node tools/seeder",
+    "mongo:stop": "docker stop DataNoobDB && docker rm DataNoobDB"
   },
   "author": "Herve Eerebout",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "bluebird": "^3.4.0",
+    "body-parser": "^1.15.1",
     "dotenv": "^2.0.0",
     "expand-home-dir": "0.0.3",
     "express": "^4.13.4",
     "lodash": "^4.13.1",
+    "mongodb": "^2.1.18",
+    "mongoose": "^4.4.20",
     "morgan": "^1.7.0"
   }
 }
