@@ -1,0 +1,2 @@
+export const SET_ASSIGNMENT = 'SET_ASSIGNMENT'
+export const SET_LOCATION = 'SET_LOCATION'
