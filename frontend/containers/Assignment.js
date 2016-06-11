@@ -11,7 +11,7 @@ let Assignment = ({ assignmentText }) => {
   var component
   if (true) {
     component = (
-      <div>               
+      <div>
         <div className='col-xs-4'>
          <Guide />
         </div>

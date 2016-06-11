@@ -1,0 +1,20 @@
+{
+  "name": "Data-Noob-Backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Herve Eerebout",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "bluebird": "^3.4.0",
+    "dotenv": "^2.0.0",
+    "expand-home-dir": "0.0.3",
+    "express": "^4.13.4",
+    "lodash": "^4.13.1",
+    "morgan": "^1.7.0"
+  }
+}
