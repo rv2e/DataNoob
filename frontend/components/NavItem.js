@@ -6,7 +6,7 @@ let NavItem = ({to, children, router, succeed}) => {
   return (
     <li className={isActive ? 'active' : ''}>
       <Link to={to}>
-      {children}{ succeed ?
+      {children}&nbsp;{ succeed ?
         <i className='fa fa-check' style={{color:'green'}}></i> : ''
       }
       </Link>

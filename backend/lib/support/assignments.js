@@ -10,7 +10,7 @@ var Assignments = mongoose.model('Assignments', {
 });
 
 var getAssignementsFromDb = (mongoose) => (projection) => (id) => {
-  return Assignments.findOne({id: id}, _.extend({ _id:0 }, projection))
+  return Assignments.findOne({id: id}, _.extend({}, { _id:0 }, projection))
 }
 
 var getAssignements = getAssignementsFromDb(mongoose);
