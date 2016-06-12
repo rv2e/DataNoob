@@ -24,19 +24,26 @@ class Editor extends Component {
     this.state.text = codeAssignment
     this.state.id = id
     return (
-      <div>
-        <h3>Editor</h3>
-        <AceEditor
-          mode={language}
-          theme='twilight'
-          onChange={(newValue) => this.state.text = newValue }
-          value={this.state.text}
-          width=''
-          editorProps={{$blockScrolling: true}}
-        />
-        <button type='button' className='btn btn-info' onClick={() => onClick(this.state.text, id)}>
-          Run code!
-        </button>
+      <div className='panel panel-primary'>
+        <div className='panel-heading'>
+          <h3 className='panel-title'>Editor</h3>
+        </div>
+        <div className='panel-body'>
+          <AceEditor
+            mode={language}
+            theme='twilight'
+            onChange={(newValue) => this.state.text = newValue }
+            value={this.state.text}
+            width=''
+            height='300px'
+            editorProps={{$blockScrolling: true}}
+          />
+        </div>
+        <div className='panel-footer'>
+          <button type='button' className='btn btn-info' onClick={() => onClick(this.state.text, id)}>
+            Run code!
+          </button>
+        </div>
       </div>
     )
   }

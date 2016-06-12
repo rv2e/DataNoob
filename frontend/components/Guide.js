@@ -4,7 +4,14 @@ import { Route } from 'react-router'
 import store from '../store'
 
 let Guide = ({ description }) => (
-    <p>{description}</p>
+  <div className='panel panel-info'>
+    <div className='panel-heading'>
+      <h3 className='panel-title'>Description</h3>
+    </div>
+    <div className='panel-body'>
+      {description}
+    </div>
+  </div>
 )
 
 const mapStateToProps = (state, ownProps) => {

@@ -5,7 +5,14 @@ import { setAssignment } from '../actions/assignment'
 import store from '../store'
 
 let OutputConsole = ({ outputConsole }) => (
-    <p>OutputConsole test {outputConsole}</p>
+  <div className='panel panel-success'>
+    <div className='panel-heading'>
+      <h3 className='panel-title'>Console</h3>
+    </div>
+    <div className='panel-body'>
+      <code>{outputConsole || 'Run the code to see the output'}</code>
+    </div>
+  </div>
 )
 
 const mapStateToProps = (state, ownProps) => {
