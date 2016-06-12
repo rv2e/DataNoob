@@ -1,18 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { Link, withRouter } from 'react-router'
+import NavItem from '../components/NavItem'
+import { connect } from 'react-redux'
 
-let NavItem = ({to, children, router}) => {
-  const isActive = router.isActive(to)
-  return (
-    <li className={isActive ? 'active' : ''}>
-      <Link to={to}>{children}</Link>
-    </li>
-  )
-}
-
-NavItem = withRouter(NavItem)
-
-const Header = () => (
+const Header = ({ assignments }) => (
   <nav className='navbar navbar-default'>
     <div className='container-fluid'>
       <div className='navbar-header'>
@@ -25,12 +16,22 @@ const Header = () => (
       </div>
       <div className='collapse navbar-collapse' id='navBar'>
         <ul className='nav navbar-nav'>
-          <NavItem to='/assignment/1'>Exercise 1</NavItem>
-          <NavItem to='/assignment/2'>Exercise 2</NavItem>
+          <NavItem to='/assignment/1' succeed={assignments['1'] ? assignments['1'].isCorrect : false} >
+            Exercise 1
+          </NavItem>
+          <NavItem to='/assignment/2' succeed={assignments['2'] ? assignments['2'].isCorrect : false} >
+              Exercise 2
+          </NavItem>
         </ul>
       </div>
     </div>
   </nav>
 )
 
-export default Header
+const mapStateToProps = (state) => {
+  return {
+    assignments: state.assignments
+  }
+}
+
+export default connect(mapStateToProps)(Header)
