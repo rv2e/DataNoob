@@ -16,7 +16,8 @@ Example of a react web application and a Node.js server to learn data science
 ### Technologies ###
  - [MongoDB](https://www.mongodb.com/fr): it runs on the backend after the start command. I encapsulate into a docker image and seed each time the starting command is ran. The frontend makes request to the backend to get all of the informations about an exercise.
  - [Redux](http://redux.js.org) binded with [React](https://facebook.github.io/react/)
-
+ - [Express](http://expressjs.com)
+ 
 ## Installation ##
 It's super easy, run the command in the backend and frontend folder: 
 ```
