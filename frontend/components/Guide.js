@@ -8,7 +8,7 @@ let Guide = ({ description }) => (
     <div className='panel-heading'>
       <h3 className='panel-title'>Description</h3>
     </div>
-    <div className='panel-body'>
+    <div className='panel-body' style={{whiteSpace: 'pre-wrap'}}>
       {description}
     </div>
   </div>

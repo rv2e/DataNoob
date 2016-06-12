@@ -5,8 +5,9 @@ var executeCommand = require('../support/commandExecutor');
 // compare the result of the code of the user and the correct answered
 var isUserCodeRight = (userAnswered, result) => {
   if (_.isEmpty(userAnswered)) return false;
+  userAnswered = userAnswered.map(function(line) { return line.trim()})
   return _.filter(result, function(code) {
-    var codeMatched = userAnswered.indexOf(code) > -1
+    var codeMatched = userAnswered.indexOf(code.trim()) > -1
     return !codeMatched
   }).length === 0;
 };
