@@ -6,8 +6,8 @@ export default class App extends Component {
     return (
       <div className='wrapper'>
         <Header/>
-        <main>{this.props.children}</main>
+        <main className='main' >{this.props.children}</main>
       </div>
-    );
+    )
   }
 }

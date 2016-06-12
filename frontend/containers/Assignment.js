@@ -1,21 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router'
-import { setAssignment } from '../actions/assignment'
+import { setAssignment, newAssignment } from '../actions/assignment'
 import store from '../store'
 import Editor from './Editor'
-import Guide from './Guide'
+import Guide from '../components/Guide'
 import OutputConsole from './OutputConsole'
 
 let Assignment = ({ assignmentText }) => {
   var component
   if (true) {
     component = (
-      <div>
-        <div className='col-xs-4'>
+      <div className='row'>
+        <div className='col-sm-4'>
          <Guide />
         </div>
-        <div className='col-xs-8'>
+        <div className='col-sm-8'>
          <Editor />
          <OutputConsole />
         </div>
@@ -45,6 +45,9 @@ const mapDispatchToProps = (dispatch) => {
 Assignment = connect(mapStateToProps, mapDispatchToProps)(Assignment)
 
 const onEnter = (nextLocation) => {
+  let id = nextLocation.params.assignment_id
+  store.dispatch(newAssignment(id))
+
   var text = ''
   if (nextLocation.params.assignment_id === '1') {
     text = 'you are on the first exercise'

@@ -1,10 +1,11 @@
 import locationMiddleware from './middlewares/location'
+import assignmentMiddleware from './middlewares/assignment'
 import React from 'react'
 import reducers from './reducers'
 import { createStore, compose, applyMiddleware } from 'redux'
 
 const store = createStore(reducers, compose(
-    applyMiddleware(locationMiddleware),
+    applyMiddleware(locationMiddleware, assignmentMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
 
