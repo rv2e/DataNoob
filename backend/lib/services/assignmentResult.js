@@ -6,7 +6,12 @@ var executeCommand = require('../support/commandExecutor');
 var isUserCodeRight = (userAnswered, result) => {
   if (_.isEmpty(userAnswered)) return false;
   userAnswered = userAnswered.map(function(line) { return line.trim()})
+  userAnswered = _.filter(userAnswered, function(line) { return !_.isEmpty(line) })
   return _.filter(result, function(code) {
+    console.log(code)
+    console.log(userAnswered)
+    console.log(code === userAnswered[0])
+    console.log('------')
     var codeMatched = userAnswered.indexOf(code.trim()) > -1
     return !codeMatched
   }).length === 0;
