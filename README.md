@@ -33,6 +33,7 @@ If you want to build the frontend application (for production):
 ```
 npm run build
 ```
+If you have a problem with the binding of the frontend with the backend, check the config.js file on the root of both project and configure the right port and hostname if needed.
 
 ### Explanation ###
 If you go the the website, you will that you can do two exercise. The first one use the Python language, the second one use the R language. If you completed the exercise, the box on the output will be green and you will see a check on the exercise (navigation bar).
