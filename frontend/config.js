@@ -3,6 +3,6 @@ module.exports = {
   hostname: 'localhost',
   backend: {
     port: 9000,
-    hostname: 'localhost',
+    hostname: 'http://localhost',
   }
 }

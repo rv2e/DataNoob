@@ -1,34 +1,6 @@
-import { SET_ASSIGNMENT, FETCH_ASSIGNMENT } from '../constants/ActionTypes'
-import { backend } from '../config'
-import bb from 'bluebird'
+import { FETCH_ASSIGNMENT, FETCH_RESULT_ASSIGNMENT } from '../constants/ActionTypes'
 import _ from 'lodash'
-
-const request = (path) => {
-  return new bb.Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest()
-    const uri = encodeURI(`://${backend.hostname}:${backend.port}${path}`)
-    xhr.open('GET', uri);
-    xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        console.log(xhr)
-        try {
-          const response = JSON.parse(xhr.responseText)
-          resolve(response)
-        } catch (error) {
-          reject(xhr)
-        }
-      } else {
-        reject(xhr)
-      }
-    }
-
-    xhr.send(JSON.stringify({
-      name: 'John Smith',
-      age: 34
-    }))
-  })
-}
+import request from '../utils/request'
 
 const getNewAssignemnt = (dispatch, action) => {
   dispatch({type: 'LOAD_NEW_ASSIGNMENT'})
@@ -42,6 +14,19 @@ const getNewAssignemnt = (dispatch, action) => {
   })
 }
 
+const getResultAssignemnt = (dispatch, action) => {
+  dispatch({type: 'LOAD_NEW_ASSIGNMENT'})
+  const data = JSON.stringify({code: action.code})
+  request(`/assignment/${action.id}`, data, 'POST')
+  .then((response) => {
+    console.log(response)
+    dispatch({type: 'RESULT_ASSIGNMENT', result: response})
+  })
+  .catch(() => {
+    // HANDLE FAIL
+  })
+}
+
 const assignment = store => next => action => {
   switch (action.type) {
     case FETCH_ASSIGNMENT:
@@ -49,7 +34,12 @@ const assignment = store => next => action => {
       if (isNewAssigment) {
         getNewAssignemnt(store.dispatch, action)
       }
-
+      else {
+        // store.dispatch()
+      }
+      break
+    case FETCH_RESULT_ASSIGNMENT:
+      getResultAssignemnt(store.dispatch, action)
       break
     default:
       return next(action)

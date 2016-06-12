@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router'
+import { getResultAssignment } from '../actions/assignment'
 import AceEditor from 'react-ace'
 import 'brace/mode/python'
 import 'brace/theme/twilight'
 import 'brace/ext/language_tools'
 import store from '../store'
 
-let Editor = ({codeAssignment, onClick}) => {
+let Editor = ({codeAssignment, id, onClick}) => {
   let input = codeAssignment
   return (
     <div>
@@ -20,7 +21,7 @@ let Editor = ({codeAssignment, onClick}) => {
         width=''
         editorProps={{$blockScrolling: true}}
       />
-      <button type='button' className='btn btn-info' onClick={() => onClick(input)}>
+      <button type='button' className='btn btn-info' onClick={() => onClick(input, id)}>
         Run code!
       </button>
     </div>
@@ -29,15 +30,15 @@ let Editor = ({codeAssignment, onClick}) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    codeAssignment: state.assignment.text
+    codeAssignment: state.assignment.text,
+    id: 1 // CHANGE
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: (code) => {
-      console.log(code);
-      console.log('----------')
+    onClick: (code, id) => {
+      dispatch(getResultAssignment(id, code))
     }
   }
 }

@@ -8,11 +8,13 @@ var isUserCodeRight = (userAnswered, result) => {
     var codeMatched = userAnswered.indexOf(code) > -1
     return !codeMatched
   }).length === 0;
-}
+};
 
 // run python or R interpretor
 // STILL HAVE TO IMPLEMENT
-var interpretCode = (userCode) => userCode;
+var interpretCode = function(userCode) {
+  return userCode.split('\n') || [];
+}
 
 module.exports = (request, response) => {
   var id = request.params.id;

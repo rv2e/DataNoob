@@ -5,7 +5,7 @@ var assignmentResult = require('./services/assignmentResult');
 
 var routes = (router) => {
   router.get('/:id', assignmentDetail);
-  router.get('/result/:id', assignmentResult);
+  router.post('/:id', assignmentResult);
   return router;
 };
 
