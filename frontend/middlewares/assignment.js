@@ -1,5 +1,5 @@
 import { FETCH_ASSIGNMENT, FETCH_RESULT_ASSIGNMENT } from '../constants/ActionTypes'
-import { setCurrentAssignment, setAssignment } from '../actions/assignment'
+import { setCurrentAssignment, setAssignment, setResultAssignment } from '../actions/assignment'
 import _ from 'lodash'
 import request from '../utils/request'
 
@@ -27,7 +27,7 @@ const getResultAssignment = (dispatch, action) => {
   request(`/assignment/${action.id}`, data, 'POST')
   .then((response) => {
     console.log(response)
-    dispatch({type: 'RESULT_ASSIGNMENT', result: response})
+    dispatch(setResultAssignment(response.id, response.codeInterpreted, response.isCorrect))
   })
   .catch(() => {
     // HANDLE FAIL

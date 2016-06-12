@@ -24,8 +24,9 @@ module.exports = (request, response) => {
     var codeInterpreted = interpretCode(userAnswered);
     var isCorrect = isUserCodeRight(codeInterpreted, dbResult && dbResult.result)
     return response.json({
+      id: id,
       isCorrect: isCorrect,
-      codeInterpreted: interpretCode || 'Impossible to interpret the code...',
+      codeInterpreted: _.isEmpty(codeInterpreted) ?  'Impossible to interpret the code...' : codeInterpreted.join('\n'),
     });
   })
   .catch((error) => response.json({

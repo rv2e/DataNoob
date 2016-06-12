@@ -1,5 +1,5 @@
 import { SET_ASSIGNMENT, SET_CURRENT_ASSIGNMENT,
-  FETCH_ASSIGNMENT, FETCH_RESULT_ASSIGNMENT } from '../constants/ActionTypes'
+  FETCH_ASSIGNMENT, FETCH_RESULT_ASSIGNMENT, RESULT_ASSIGNMENT } from '../constants/ActionTypes'
 
 export const setCurrentAssignment = (id) => {
   return {
@@ -27,5 +27,13 @@ export const getResultAssignment = (id, code) => {
     type: FETCH_RESULT_ASSIGNMENT,
     id,
     code
+  }
+}
+export const setResultAssignment = (id, outputConsole, isCorrect) => {
+  return {
+    type: RESULT_ASSIGNMENT,
+    id,
+    outputConsole,
+    isCorrect
   }
 }
