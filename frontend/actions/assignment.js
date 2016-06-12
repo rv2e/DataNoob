@@ -1,9 +1,17 @@
-import { SET_ASSIGNMENT, FETCH_ASSIGNMENT, FETCH_RESULT_ASSIGNMENT } from '../constants/ActionTypes'
+import { SET_ASSIGNMENT, SET_CURRENT_ASSIGNMENT,
+  FETCH_ASSIGNMENT, FETCH_RESULT_ASSIGNMENT } from '../constants/ActionTypes'
 
-export const setAssignment = (text) => {
+export const setCurrentAssignment = (id) => {
+  return {
+    type: SET_CURRENT_ASSIGNMENT,
+    id
+  }
+}
+
+export const setAssignment = ({ language, codeAssignment, description, outputConsole, id }) => {
   return {
     type: SET_ASSIGNMENT,
-    text
+    language, codeAssignment, description, outputConsole, id
   }
 }
 

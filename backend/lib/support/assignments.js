@@ -6,6 +6,7 @@ var Assignments = mongoose.model('Assignments', {
   description: String,
   editor: String,
   result: [String],
+  language: String,
 });
 
 var getAssignementsFromDb = (mongoose) => (projection) => (id) => {
@@ -15,7 +16,7 @@ var getAssignementsFromDb = (mongoose) => (projection) => (id) => {
 var getAssignements = getAssignementsFromDb(mongoose);
 
 module.exports = {
-  getDetailOfId: getAssignements({ description:1, editor:1 }),
-  getResultOfId: getAssignements({ result: 1 }),
+  getDetailOfId: getAssignements({ description: 1, editor: 1, language: 1 }),
+  getResultOfId: getAssignements({ result: 1, language: 1 }),
   Assignments: Assignments,
 }

@@ -6,14 +6,14 @@ Assignments.create([
     id: 1,
     description: 'desc 1',
     editor: 'editor 1',
-    language: 'Python',
+    language: 'python',
     result: ['test', 'test2'],
   },
   {
     id: 2,
     description: 'desc 2',
     editor: 'editor 2',
-    language: 'R',
+    language: 'r',
     result: ['test', 'test2'],
   },
 ])

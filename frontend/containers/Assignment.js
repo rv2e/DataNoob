@@ -1,15 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router'
-import { setAssignment, newAssignment } from '../actions/assignment'
+import { newAssignment } from '../actions/assignment'
 import store from '../store'
 import Editor from './Editor'
 import Guide from '../components/Guide'
 import OutputConsole from './OutputConsole'
+import _ from 'lodash'
 
-let Assignment = ({ assignmentText }) => {
-  var component
-  if (true) {
+let Assignment = ({ isLoading }) => {
+  let component
+  if (!isLoading) {
     component = (
       <div className='row'>
         <div className='col-sm-4'>
@@ -22,11 +23,11 @@ let Assignment = ({ assignmentText }) => {
       </div>
     )
   } else {
-    component = <p>hello</p>
+    component = <h1>Loading...</h1>
   }
+
   return (
     <div className='container-fluid jumbotron'>
-      <p>{assignmentText}</p>
       {component}
     </div>
   )
@@ -34,32 +35,18 @@ let Assignment = ({ assignmentText }) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    assignmentText: state.assignment.text
+    isLoading: _.isEmpty(state.assignments.current)
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return { }
-}
-
-Assignment = connect(mapStateToProps, mapDispatchToProps)(Assignment)
+Assignment = connect(mapStateToProps)(Assignment)
 
 const onEnter = (nextLocation) => {
   let id = nextLocation.params.assignment_id
   store.dispatch(newAssignment(id))
-
-  var text = ''
-  if (nextLocation.params.assignment_id === '1') {
-    text = 'you are on the first exercise'
-  } else {
-    text = 'you are on the second exercise'
-  }
-
-  store.dispatch(setAssignment(text))
 }
 
 const AssignmentRoute = <Route path='assignment/:assignment_id'
-component={Assignment} onEnter={onEnter} />
-
+  component={Assignment} onEnter={onEnter} />
 
 export default AssignmentRoute

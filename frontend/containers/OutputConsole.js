@@ -4,13 +4,13 @@ import { Route } from 'react-router'
 import { setAssignment } from '../actions/assignment'
 import store from '../store'
 
-let OutputConsole = ({ text }) => (
-    <p>OutputConsole test</p>
+let OutputConsole = ({ outputConsole }) => (
+    <p>OutputConsole test {outputConsole}</p>
 )
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    text: state.assignment.text
+    outputConsole: state.assignments.current.outputConsole
   }
 }
 

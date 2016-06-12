@@ -13,7 +13,7 @@ var isUserCodeRight = (userAnswered, result) => {
 // run python or R interpretor
 // STILL HAVE TO IMPLEMENT
 var interpretCode = function(userCode) {
-  return userCode.split('\n') || [];
+  return userCode.split('\n').map(line => line.trim()) || [];
 }
 
 module.exports = (request, response) => {
