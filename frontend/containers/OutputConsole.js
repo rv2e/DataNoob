@@ -10,7 +10,7 @@ let OutputConsole = ({ outputConsole, isCorrect}) => (
       <h3 className='panel-title'>Console</h3>
     </div>
     <div className='panel-body'>
-      <code style={{whiteSpace: 'pre-wrap'}}>{outputConsole}</code>
+      <pre style={{whiteSpace: 'pre-wrap'}}>{outputConsole}</pre>
     </div>
   </div>
 )

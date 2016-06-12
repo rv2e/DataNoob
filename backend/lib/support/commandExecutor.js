@@ -20,7 +20,8 @@ var executeProcessInTempFile = function(processToExecute, data, language) {
 
 var executeProcess = function(filePath, language) {
   return new Promise(function(resolve) {
-    childProcess.exec(language + ' ' + filePath, function(err, stdout, stderr) {
+    var command = language === 'r' ? 'Rscript ' : language + ' ';
+    childProcess.exec(command + filePath, function(err, stdout, stderr) {
       var dataToReturn = err ? err.message : stdout;
       resolve(dataToReturn)
     });
