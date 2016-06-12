@@ -25,10 +25,6 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { 
-        test: /\.js$/,
-        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
-      },
       {
         test: /\.js$/,
         loaders: ['react-hot', 'babel'],
