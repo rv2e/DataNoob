@@ -23,10 +23,12 @@ module.exports = (request, response) => {
     var userAnswered = request.body && request.body.code;
     var codeInterpreted = interpretCode(userAnswered);
     var isCorrect = isUserCodeRight(codeInterpreted, dbResult && dbResult.result)
+    codeInterpreted = _.isEmpty(codeInterpreted) ?  ['Impossible to interpret the code...'] : codeInterpreted
+    codeInterpreted = _.filter(codeInterpreted, (item) => !_.isEmpty(item)).map((item)=>item.trim()).join('\n')
     return response.json({
       id: id,
       isCorrect: isCorrect,
-      codeInterpreted: _.isEmpty(codeInterpreted) ?  'Impossible to interpret the code...' : codeInterpreted.join('\n'),
+      codeInterpreted: codeInterpreted,
     });
   })
   .catch((error) => response.json({
